@@ -32,7 +32,11 @@ func cli() {
 
 	reader := bufio.NewReader(os.Stdin)
 	for {
-		reader.ReadBytes('\n')
+		_, err = reader.ReadBytes('\n')
+		if err != nil {
+			fmt.Printf("error reading bytes: %v", err)
+			os.Exit(1)
+		}
 		for i := 0; i < 100; i++ {
 			fmt.Println()
 		}
